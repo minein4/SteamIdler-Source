@@ -1,8 +1,9 @@
 # Prompt the user for the Steam App ID
+Clear
 $steamAppID = Read-Host "Enter the Steam App ID"
 
 # Define the path to the text file
-$filePath = "E:\steamidle_source\steam_appid.txt"
+$filePath = Join-Path $pwd "steam_appid.txt"
 
 # Check if the file exists
 if (Test-Path $filePath) {
@@ -18,7 +19,7 @@ if (Test-Path $filePath) {
 
         Write-Host "Steam App ID updated successfully."
         Write-Host "Launching hl2 as $steamAppID"
-        Start-Process -FilePath "cmd.exe" -ArgumentList "/k start hl2.exe +console -windowed -w 1280 -h 720 && exit"
+        Start-Process -FilePath "cmd.exe" -ArgumentList "/k start hl2.exe -game steamidlesource +console -windowed -w 1280 -h 720 && exit"
          
     } catch {
         Write-Host "Error updating the Steam App ID: $_"
